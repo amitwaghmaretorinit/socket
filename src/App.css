@@ -1,5 +1,141 @@
 .App {
   text-align: center;
+  overflow-y: hidden;
+}
+hr {
+  height: 1rem;
+}
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  flex: 0.3;
+}
+.sidebar_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_list {
+  max-height: 91vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+}
+
+.search_bar {
+  border-bottom: 1px solid #cecece;
+  align-content: center;
+  display: flex;
+  height: 60px;
+  border-right: 1px solid #cecece;
+  padding: 5px;
+}
+.avatar {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+.search_bar > input {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  font-size: 21px;
+  outline: none;
+}
+
+.user_item {
+  cursor: pointer;
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid #cecece;
+  border-width: 0.1pt;
+}
+
+.user_msg {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-left: 16px;
+}
+.name {
+  font-size: 21px;
+}
+.latest_message {
+  color: #cecece;
+}
+.message_panel {
+  flex: 1;
+  background-color: #efefef;
+}
+
+.message_panel_header {
+  height: 60px;
+  background-color: white;
+  border-bottom: 1px solid #cecece;
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+  flex-direction: column;
+}
+.message_panel_container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.profile_row {
+  display: flex;
+  margin-left: 10px;
+}
+.user_name {
+  margin-left: 10px;
+  font-size: 21px;
+}
+.message_ground {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  max-height: 100%;
+  overflow-y: scroll;
+  padding: 5px;
+  padding-right: 30px;
+}
+.message_footer {
+  height: 60px;
+  background-color: white;
+  border-top: 1px solid #cecece;
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+  flex-direction: column;
+}
+.message_footer > input {
+  border: none;
+  height: 100%;
+  outline: none;
+  font-size: 21px;
+  margin-left: 10px;
+}
+.message_item {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  width: 100%;
+}
+.message_item > span {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10%;
 }
 
 .App-logo {
