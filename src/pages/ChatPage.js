@@ -20,7 +20,9 @@ function ChatPage() {
   useEffect(() => {
     if (selectedUser) {
       const link = "message" + selectedUser?.id;
-      socket.on(link, ({ fromId, toId, msg }) => {});
+       socket.on(link, ({ fromId, toId, msg }) => {
+         alert(msg)
+       });
     }
   }, [selectedUser?.id]);
  
