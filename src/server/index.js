@@ -1,11 +1,22 @@
 import express from "express";
 import http from "http";
+import bodyParser from "body-parser";
 import { Server } from "socket.io";
 import cors from "cors";
+import Routes from "./src/routes.js";
+import db from "./src/seq.js";
 
 const app = express();
 app.use(cors());
 app.options("*", cors());
+app.use(express.json());
+
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use(Routes);
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -23,10 +34,7 @@ io.on("connection", (socket) => {
     console.log("disconnected");
   });
 });
-
-app.get("/", (req, res) => {
-  res.send("hi");
-});
+db.sequelize.sync();
 
 server.listen(4000, () => {
   console.log("server started at", 4000);
