@@ -26,8 +26,13 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  socket.on("join", ({ name, room }) => {
-    console.log({ name, room });
+  socket.on("join", ({ fromId }) => {
+    console.log({ fromId });
+  });
+
+  socket.on("send", ({ fromId, toId, msg }) => {
+    const link = "message" + fromId;
+    io.emit(link, { fromId, toId, msg });
   });
 
   socket.on("disconnect", () => {

@@ -3,7 +3,7 @@ import MessageFooter from "../MessageFooter";
 import MessageItem from "../MessageItem";
 import MessagePanelHeader from "../MessagePanelHeader";
 
-function MessagePanel({selectedUser}) {
+function MessagePanel({selectedUser,onSend}) {
   return (
     <div className={"message_panel_container"}>
       <MessagePanelHeader selectedUser={selectedUser} />
@@ -18,7 +18,7 @@ function MessagePanel({selectedUser}) {
             </MessageItem>
           ))}
       </div>
-      <MessageFooter />
+      <MessageFooter onSend={onSend} />
     </div>
   );
 }
