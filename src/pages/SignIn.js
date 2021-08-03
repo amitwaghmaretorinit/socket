@@ -15,7 +15,7 @@ function SignIn() {
       alert("Something went wrong !");
       return;
     }
-    history.push(`/chat?${res.id}`);
+    history.push(`/chat/${res.id}`);
   };
 
   const { name, email } = info;

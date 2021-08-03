@@ -10,7 +10,7 @@ export default function Routes() {
         <Route path={"/"} exact>
           <SignIn />
         </Route>
-        <Route path={"/chat"}>
+        <Route   path={"/chat/:userId"}>
           <ChatPage />
         </Route>
       </Switch>

@@ -2,6 +2,15 @@ import db from "../../seq.js";
 
 class UserController {
   User = db.user;
+
+  get = async (req, res) => {
+    try {
+      const users = await this.User.findAll({});
+      res.send({ data: users });
+    } catch (err) {
+      res.send([]);
+    }
+  };
   registerUser = async (req, res) => {
     try {
       const { email, name } = req.body || {};
