@@ -3,10 +3,10 @@ import MessageFooter from "../MessageFooter";
 import MessageItem from "../MessageItem";
 import MessagePanelHeader from "../MessagePanelHeader";
 
-function MessagePanel() {
+function MessagePanel({selectedUser}) {
   return (
     <div className={"message_panel_container"}>
-      <MessagePanelHeader />
+      <MessagePanelHeader selectedUser={selectedUser} />
       <div className={"message_ground"}>
         {Array(100)
           .fill("")

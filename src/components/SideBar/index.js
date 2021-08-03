@@ -12,8 +12,7 @@ const USER_LIST = Array(33)
     };
   });
 
-function SideBar({ currentUserId, users = [] }) {
-  console.log({currentUserId});
+function SideBar({ selectedUser, currentUserId, users = [], onUserSelect }) {
   return (
     <div className={"sidebar_container"}>
       <SearchHeader />
@@ -21,7 +20,7 @@ function SideBar({ currentUserId, users = [] }) {
         {users.map((i, index) => {
           return (
             currentUserId !== i.id && (
-              <div>
+              <div onClick={() => onUserSelect(i,index)} className={selectedUser?.id===i.id && 'selected_user'}>
                 <UserItem
                   {...i}
                   key={i.id}

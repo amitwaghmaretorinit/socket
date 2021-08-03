@@ -8,6 +8,7 @@ import { getUsers } from "./helpers";
 
 function ChatPage() {
   const [chatUsers, setChatUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
   const { userId } = useParams();
   useEffect(() => {
     const socket = io("localhost:4000");
@@ -17,16 +18,33 @@ function ChatPage() {
   const fetchAllUsers = async () => {
     const users = await getUsers();
     setChatUsers(users || []);
+    if (users?.length) {
+      setSelectedUser({
+        ...users[0],
+        avatar: require(`../assets/images/user0.jpg`).default,
+      });
+    }
+  };
+  const onUserSelect = (user, index) => {
+    setSelectedUser({
+      ...user,
+      avatar: require(`../assets/images/user${index % 3}.jpg`).default,
+    });
   };
 
   return (
     <div className="App">
       <div className={"container"}>
         <div className={"sidebar"}>
-          <SideBar currentUserId={parseInt(userId)} users={chatUsers} />
+          <SideBar
+            onUserSelect={onUserSelect}
+            currentUserId={parseInt(userId)}
+            users={chatUsers}
+            selectedUser={selectedUser}
+          />
         </div>
         <div className={"message_panel"}>
-          <MessagePanel />
+          {selectedUser && <MessagePanel selectedUser={selectedUser} />}
         </div>
       </div>
     </div>
