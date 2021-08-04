@@ -1,9 +1,9 @@
 import React from "react";
 
-function SearchHeader() {
+function SearchHeader({onSearch=()=>{}}) {
   return (
     <div className={'search_bar'}>
-      <input placeholder={"Search..."} />
+      <input placeholder={"search for chat..."} onChange={onSearch} />
     </div>
   );
 }

@@ -36,7 +36,7 @@ function SignIn() {
             onChange={onTextChange}
             placeholder={"Enter Email"}
           />
-          <button onClick={onRegisterUser}>start chat</button>
+          <button className={'start'} onClick={onRegisterUser}>start chat</button>
         </div>
       </div>
     </div>

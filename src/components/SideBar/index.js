@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchHeader from "../SearchHeader";
 import UserItem from "../UserItem";
 
@@ -13,14 +13,27 @@ const USER_LIST = Array(33)
   });
 
 function SideBar({ selectedUser, currentUserId, users = [], onUserSelect }) {
+  const [filter, setFilter] = useState("");
+  const onSearch = (e) => {
+    setFilter(e.target.value);
+  };
+  const filteredUsers = filter
+    ? users.filter((user) =>
+        user.name.toLowerCase().includes(filter.toLowerCase())
+      )
+    : users;
+
   return (
     <div className={"sidebar_container"}>
-      <SearchHeader />
+      <SearchHeader onSearch={onSearch} />
       <div className={"user_list"}>
-        {users.map((i, index) => {
+        {filteredUsers.map((i, index) => {
           return (
             currentUserId !== i.id && (
-              <div onClick={() => onUserSelect(i,index)} className={selectedUser?.id===i.id && 'selected_user'}>
+              <div
+                onClick={() => onUserSelect(i, index)}
+                className={selectedUser?.id === i.id && "selected_user"}
+              >
                 <UserItem
                   {...i}
                   key={i.id}

@@ -10,7 +10,7 @@ const socket = io("localhost:4000");
 function ChatPage() {
   const [chatUsers, setChatUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
-  const [messages, setMessages, messagesRef] = useState([]);
+  const [messages, setMessages] = useState([]);
   let { userId } = useParams();
   userId = parseInt(userId);
 
