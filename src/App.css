@@ -60,6 +60,7 @@ hr {
 .sidebar_container {
   display: flex;
   flex-direction: column;
+  width: 101%;
 }
 
 .user_list {
@@ -182,6 +183,7 @@ hr {
   cursor: pointer;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  border: none;
 }
 
 .message_item {
