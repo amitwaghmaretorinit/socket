@@ -7,13 +7,20 @@ function MessagePanel({ selectedUser, onSend, messages = [] }) {
   return (
     <div className={"message_panel_container"}>
       <MessagePanelHeader selectedUser={selectedUser} />
-      <div className={"message_ground"}>
-        {messages?.map((i, index) => (
-          <MessageItem isSender={i.sender !== selectedUser.id}>
-            <span id={`message_${index}`}> {i.msg}</span>
-          </MessageItem>
-        ))}
-      </div>
+      {!messages?.length && (
+        <div className={"no_messages"}>
+          <span>This is you first conversation with {selectedUser?.name}</span>
+        </div>
+      )}
+      {!!messages?.length && (
+        <div className={"message_ground"}>
+          {messages?.map((i, index) => (
+            <MessageItem isSender={i.sender !== selectedUser.id}>
+              <span id={`message_${index}`}> {i.msg}</span>
+            </MessageItem>
+          ))}
+        </div>
+      )}
       <MessageFooter onSend={onSend} />
     </div>
   );
