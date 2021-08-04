@@ -17,3 +17,12 @@ export const getUsers = async () => {
     return false;
   }
 };
+
+export const getMessagesForUser = async (from, to) => {
+  try {
+    const res = await post("messages", { from, to });
+    return res.data;
+  } catch (err) {
+    return [];
+  }
+};

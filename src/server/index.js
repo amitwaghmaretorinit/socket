@@ -5,6 +5,7 @@ import { Server } from "socket.io";
 import cors from "cors";
 import Routes from "./src/routes.js";
 import db from "./src/seq.js";
+import MessagesController from "./src/controllers/MessagesController/index.js";
 
 const app = express();
 app.use(cors());
@@ -30,9 +31,14 @@ io.on("connection", (socket) => {
     console.log({ fromId });
   });
 
-  socket.on("send", ({ fromId, toId, msg }) => {
+  socket.on("send", async ({ fromId, toId, msg }) => {
     const link = "message" + fromId;
-    io.emit(link, { fromId, toId, msg });
+    const messageId = await MessagesController.saveMessage({
+      fromId,
+      toId,
+      msg,
+    });
+    io.emit(link, { fromId, toId, msg,messageId });
   });
 
   socket.on("disconnect", () => {

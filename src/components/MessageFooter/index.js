@@ -7,6 +7,7 @@ function MessageFooter({ onSend = () => {} }) {
   };
   const onSendHandler = () => {
     onSend(text);
+    setText("");
   };
   return (
     <div className={"message_footer"}>
@@ -16,7 +17,13 @@ function MessageFooter({ onSend = () => {} }) {
           onChange={onTextChange}
           className={"message_footer_input"}
           placeholder={"Enter Message..."}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onSendHandler();
+            }
+          }}
         />
+
         <button onClick={onSendHandler} className={"send_btn"}>
           Send
         </button>

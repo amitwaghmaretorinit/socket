@@ -3,20 +3,16 @@ import MessageFooter from "../MessageFooter";
 import MessageItem from "../MessageItem";
 import MessagePanelHeader from "../MessagePanelHeader";
 
-function MessagePanel({selectedUser,onSend}) {
+function MessagePanel({ selectedUser, onSend, messages = [] }) {
   return (
     <div className={"message_panel_container"}>
       <MessagePanelHeader selectedUser={selectedUser} />
       <div className={"message_ground"}>
-        {Array(100)
-          .fill("")
-          .map((i, index) => (
-            <MessageItem isSender={index % 10 === 0}>
-              <span>
-                {index % 5 === 0 ? "MessageMessageMessage" : "Message"}
-              </span>
-            </MessageItem>
-          ))}
+        {messages?.map((i, index) => (
+          <MessageItem isSender={i.sender !== selectedUser.id}>
+            <span id={`message_${index}`}> {i.msg}</span>
+          </MessageItem>
+        ))}
       </div>
       <MessageFooter onSend={onSend} />
     </div>

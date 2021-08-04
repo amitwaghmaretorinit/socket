@@ -162,10 +162,7 @@ hr {
   padding: 5px;
   justify-content: center;
   flex-direction: column;
-  position: absolute;
-  width: 77%;
-  bottom: 0;
-  
+    
 }
 .message_footer_input {
   border: none;

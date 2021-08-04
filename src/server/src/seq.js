@@ -1,6 +1,7 @@
 import Sequelize from "sequelize";
 import dotenv from "dotenv";
 import UserModel from "./models/UserModel/index.js";
+import MessagesModel from "./models/MessagesModel/index.js";
 
 dotenv.config();
 
@@ -32,5 +33,5 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.user = UserModel(sequelize, Sequelize);
-
+db.messages=MessagesModel(sequelize,Sequelize);
 export default db;
